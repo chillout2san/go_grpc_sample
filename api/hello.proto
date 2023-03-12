@@ -1,0 +1,25 @@
+// Protocol Buffer Languageのバージョン指定
+syntax = "proto3";
+
+// Protoから自動生成からコードの置き場所
+option go_package = "pkg/grpc";
+
+// このProtoファイルのパッケージ名
+// Protoファイルとのやりとりに使用
+package myapp;
+
+// メソッドを一括りにしたもの
+service GreetingService {
+    // gRPCで呼び出したいProcedure(メソッド)
+    rpc Hello (HelloRequest) returns (HelloResponse);
+}
+
+message HelloRequest {
+    // 定義できる型は様々ある
+    // https://protobuf.dev/programming-guides/proto3/
+    string name = 1;
+}
+
+message HelloResponse {
+    string message = 1;
+}
